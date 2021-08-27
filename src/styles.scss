@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+
+$primary: #fba0e3;
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    height: 100vh;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(255, 255, 255, 0.5),
+        rgba(180, 34, 34, 0.5)),
+        url(assets/background.jpg);
+    background-size: cover;
+}
+
+h3 {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+}
+
+div, p {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+}

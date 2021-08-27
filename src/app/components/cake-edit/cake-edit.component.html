@@ -1,0 +1,62 @@
+<div class="p-2 pt-3">
+    <h3>{{ operation }} un dolce</h3>
+    <div class="my-3">
+        <form class="row" [formGroup]="cakeForm" (ngSubmit)="onSubmit()">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" formControlName="name" class="form-control" placeholder="Inserisci il nome della torta">
+                </div>
+                <div class="form-group">
+                    <label for="baked">Sfornata</label>
+                    <input type="date" class="form-control" id="baked" name="baked" [valueAsDate]="baked" (change)="updateBakedDate($event)" />
+                </div>
+                
+                <div class="form-group">
+                    <label for="quantity">Quantità</label>
+                    <input type="number" id="quantity" name="quantity" formControlName="quantity" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="sold">Vendute</label>
+                    <input type="number" id="sold" name="sold" formControlName="sold" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="price">Prezzo</label>
+                    <input type="number" id="price" name="price" formControlName="price" class="form-control">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="d-md-flex justify-content-between mb-2">
+                    <h5>Lista degli ingredienti</h5>
+                    <button type="button" class="btn btn-success" (click)="addIngredient()">Aggiungi un ingrediente</button>
+                </div>
+                <div class="form-group ingredientList ml-3" formArrayName="ingredientList">
+                    <div *ngFor="let ingredient of ingredientList().controls; let i = index" class="ingredient" [formGroupName]="i">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="form-group">
+                                    <label for="name">Nome</label>
+                                    <input type="text" formControlName="ingredientName" class="form-control" placeholder="Inserisci il nome dell'ingrediente">
+                                </div>
+                                <div class="form-group">
+                                    <label for="quantity">Quantità</label>
+                                    <input type="number" formControlName="ingredientQuantity" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Unità di misura</label>
+                                    <input type="text" formControlName="unit" class="form-control" placeholder="Inserisci l'unità di misura">
+                                </div>
+                            </div>
+                            <div class="col-4 d-md-flex">
+                                <button type="button" class="btn btn-danger m-auto" (click)="removeIngredient(i)">Rimuovi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-md-flex mt-4">
+                <button type="submit" class="btn btn-primary m-auto">Salva</button>
+            </div>
+        </form>
+    </div>
+</div>
